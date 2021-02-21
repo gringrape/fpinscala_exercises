@@ -20,4 +20,13 @@ object Main extends App {
     }
     go(n, 0, 1)
   }
+
+  def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean = {
+    @tailrec
+    def go(n: Int, acc: Boolean): Boolean = {
+      if (n == as.length - 1) acc
+      else go(n + 1, acc && ordered(as(n), as(n + 1)))
+    }
+    go(0, true)
+  }
 }
