@@ -26,6 +26,12 @@ object List {
     case _                                     => 101
   }
 
+  // Promblem 3.2
+  def tail(target: List[Int]): List[Int] = target match {
+    case Nil        => sys.error("No list is given")
+    case Cons(_, x) => x
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
