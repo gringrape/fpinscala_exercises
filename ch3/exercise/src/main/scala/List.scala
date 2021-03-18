@@ -32,6 +32,29 @@ object List {
     case Cons(_, x) => x
   }
 
+  // Problem 3.3
+  def setHead(list: List[Int], head: Int): List[Int] = list match {
+    case Nil         => sys.error("No list is given")
+    case Cons(_, xs) => Cons(head, xs)
+  }
+
+  // Problem 3.4
+  // 첫번째 방법 - 재귀함수를 통해서 반복을 처리해 주었다.
+  def drop(list: List[Int], n: Int): List[Int] = {
+    if (n <= 0) list
+    else
+      list match {
+        case Nil        => Nil
+        case Cons(_, t) => drop(t, n - 1)
+      }
+  }
+
+  // Problem 3.5
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Cons(h, t) if (f(h)) => dropWhile(t, f)
+    case _                    => l // 위에서 안걸리는 모든 경우를 다룰때, 이런 표현을 쓴다.
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
