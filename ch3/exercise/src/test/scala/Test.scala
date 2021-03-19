@@ -26,4 +26,13 @@ class Test extends AnyFunSuite {
   test("Problem 3.5") {
     assert(dropWhile[Int](List(2, 4, 3, 5), _ % 2 == 0) == List(3, 5))
   }
+
+  test("Problem 3.6") {
+    assert(init(List(1, 2, 3, 4)) == List(1, 2, 3))
+    // assert(init(List(1, 2, 3, 4, 5)) == List(1, 2, 3, 4))
+  }
+
+  test("Problem 3.6 part2") {
+    assert(init(List(1, 2, 3, 4)) == List(1, 2, 3))
+  }
 }

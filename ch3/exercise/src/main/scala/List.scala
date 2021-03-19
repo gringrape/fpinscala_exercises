@@ -1,5 +1,7 @@
 package datastructures
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -53,6 +55,23 @@ object List {
   def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
     case Cons(h, t) if (f(h)) => dropWhile(t, f)
     case _                    => l // 위에서 안걸리는 모든 경우를 다룰때, 이런 표현을 쓴다.
+  }
+
+  // Problem 3.6 - 절반의 성공
+  def init(l: List[Int]): List[Int] = l match {
+    case Cons(h, Nil) => Nil
+    case Cons(h, t)   => Cons(h, init(t))
+  }
+
+  def init2(l: List[Int]): List[Int] = {
+    import collection.mutable.ListBuffer
+    val buf = new ListBuffer[Int]
+    @tailrec
+    def go(cur: List[Int]): List[Int] = cur match {
+      case Cons(_, Nil) => List(buf.toList: _*) // 이 부분의 타입 지정이 이해가진 않는다.
+      case Cons(h, t)   => buf.addOne(h); go(t)
+    }
+    go(l)
   }
 
   // 이게 없으면 자료구조를 쓸수가 없다
