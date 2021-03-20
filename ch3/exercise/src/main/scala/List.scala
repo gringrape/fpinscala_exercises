@@ -118,6 +118,14 @@ object List {
     foldRight(l, Nil: List[Int])((h, t) => Cons(h + 1, t))
   }
 
+  def map[A, B](l: List[A], f: A => B): List[B] = {
+    foldRight(l, Nil: List[B])((h, t) => Cons(f(h), t))
+  }
+
+  def convertToString(l: List[Double]) = {
+    map(l, (d: Double) => d.toString())
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil

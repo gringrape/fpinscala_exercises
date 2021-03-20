@@ -93,4 +93,8 @@ class Test extends AnyFunSuite {
   test("Problem 3.16") {
     assert(addOne(List(1, 2, 3, 4)) == List(2, 3, 4, 5))
   }
+
+  test("Problem 3.17") {
+    assert(convertToString(List(1.0, 2.0, 3.0)) == List("1.0", "2.0", "3.0"))
+  }
 }
