@@ -3,6 +3,8 @@ import org.scalatest.funsuite.AnyFunSuite
 import datastructures.List
 import datastructures.List._
 
+import datastructures._
+
 class Test extends AnyFunSuite {
   test("Problem 3.1") {
     assert(matched(List(1, 2, 3, 4, 5)) == 3)
@@ -39,5 +41,26 @@ class Test extends AnyFunSuite {
   test("foldRight example") {
     assert(foldRight(List(1, 2, 3, 4), 0)(_ + _) == 10)
     assert(foldRight(List(1, 2, 3, 4, 5), 1)(_ * _) == 120)
+    assert(
+      foldRight(List(1, 2, 3), Nil: List[Int])(Cons(_, _)) == List(1, 2, 3)
+    )
+  }
+
+  // Problem 3.7
+  /*
+    product 가 0 을 만난다고 해도 평가단축이 일어나지는 않는다. foldRight 의 첫번째 인수가
+    Nil 이 될때까지 계속해서 호출이 일어나게 된다.
+   */
+
+  // Problem 3.8
+  /*
+    foldRight 을 이해하는 한가지 방법은, 그것이 Cons 생성자를 f 로, Nil 을 z 로 바꾼다는
+    것이다. 따라서, 만약 f 에 다시 Cons 생성자를 넣고, z 자리에 다시 Nil 을 넣는다면,
+    원래 목록이 나올 것이다.
+   */
+
+  test("Problem 3.9") {
+    assert(length[Int](List(1, 2, 3, 5)) == 4)
+    assert(length[Int](List(1, 2, 3, 5, 7, 8, 9)) == 7)
   }
 }

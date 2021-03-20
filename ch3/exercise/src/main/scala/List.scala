@@ -81,6 +81,10 @@ object List {
     }
   }
 
+  def length[A](as: List[A]): Int = {
+    foldRight(as, 0)((_, b) => b + 1)
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
