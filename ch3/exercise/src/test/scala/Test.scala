@@ -85,4 +85,12 @@ class Test extends AnyFunSuite {
       ) == List(1, 2, 3, 4)
     )
   }
+
+  test("Problem 3.14") {
+    assert(append(List(1, 2, 3, 4), List(5)) == List(1, 2, 3, 4, 5))
+  }
+
+  test("Problem 3.16") {
+    assert(addOne(List(1, 2, 3, 4)) == List(2, 3, 4, 5))
+  }
 }

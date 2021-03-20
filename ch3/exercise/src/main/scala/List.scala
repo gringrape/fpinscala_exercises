@@ -110,8 +110,13 @@ object List {
   def foldRightViaFoldLeft[A, B](l: List[A], z: B)(f: (A, B) => B): B =
     foldLeft(reverse(l), z)((b, a) => f(a, b))
 
-  // def foldRightViaFoldLeft[A, B](l: List[A], z: B)(f: (A, B) => B): B =
-  //   foldLeft(reverse(l), z)((b, a) => f(a, b))
+  def append[A](l: List[A], x: List[A]): List[A] = {
+    foldRight(l, x)(Cons(_, _))
+  }
+
+  def addOne(l: List[Int]): List[Int] = {
+    foldRight(l, Nil: List[Int])((h, t) => Cons(h + 1, t))
+  }
 
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
