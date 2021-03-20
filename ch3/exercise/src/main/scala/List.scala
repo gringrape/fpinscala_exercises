@@ -74,6 +74,13 @@ object List {
     go(l)
   }
 
+  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
+    as match {
+      case Nil         => z
+      case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+    }
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil

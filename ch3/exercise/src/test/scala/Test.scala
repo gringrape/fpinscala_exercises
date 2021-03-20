@@ -35,4 +35,9 @@ class Test extends AnyFunSuite {
   test("Problem 3.6 part2") {
     assert(init(List(1, 2, 3, 4)) == List(1, 2, 3))
   }
+
+  test("foldRight example") {
+    assert(foldRight(List(1, 2, 3, 4), 0)(_ + _) == 10)
+    assert(foldRight(List(1, 2, 3, 4, 5), 1)(_ * _) == 120)
+  }
 }
