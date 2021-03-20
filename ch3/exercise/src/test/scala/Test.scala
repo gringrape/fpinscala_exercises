@@ -97,4 +97,14 @@ class Test extends AnyFunSuite {
   test("Problem 3.17") {
     assert(convertToString(List(1.0, 2.0, 3.0)) == List("1.0", "2.0", "3.0"))
   }
+
+  test("Problem 3.18") {
+    assert(
+      map(List(1.0, 2.0, 3.0))((i: Double) => i.toString()) == List(
+        "1.0",
+        "2.0",
+        "3.0"
+      )
+    )
+  }
 }
