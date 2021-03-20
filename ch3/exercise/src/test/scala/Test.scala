@@ -63,4 +63,14 @@ class Test extends AnyFunSuite {
     assert(length[Int](List(1, 2, 3, 5)) == 4)
     assert(length[Int](List(1, 2, 3, 5, 7, 8, 9)) == 7)
   }
+
+  test("Problem 3.10") {
+    assert(foldLeft(List(1, 2, 3, 4), 0)(_ + _) == 10)
+  }
+
+  test("Problem 3.11") {
+    assert(sum2(List(1, 2, 3, 4, 5)) == 15)
+    assert(product2(List(1, 2, 3, 5)) == 30)
+    assert(length2(List(1, 2, 3, 4, 5, 6)) == 6)
+  }
 }

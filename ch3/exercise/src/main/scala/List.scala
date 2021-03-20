@@ -85,6 +85,24 @@ object List {
     foldRight(as, 0)((_, b) => b + 1)
   }
 
+  @tailrec
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = as match {
+    case Nil        => z
+    case Cons(h, t) => foldLeft(t, f(z, h))(f)
+  }
+
+  def sum2(l: List[Int]): Int = {
+    foldLeft(l, 0)(_ + _)
+  }
+
+  def product2(l: List[Double]): Double = { // 타입은 직접건네주지 않았는데 어떻게 결정된걸까?
+    foldLeft(l, 1.0)(_ * _)
+  }
+
+  def length2(l: List[Int]): Int = {
+    foldLeft(l, 0)((a, _) => a + 1)
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
