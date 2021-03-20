@@ -73,4 +73,8 @@ class Test extends AnyFunSuite {
     assert(product2(List(1, 2, 3, 5)) == 30)
     assert(length2(List(1, 2, 3, 4, 5, 6)) == 6)
   }
+
+  test("Problem 3.12") {
+    assert(reverse(List(1, 2, 3, 4)) == List(4, 3, 2, 1))
+  }
 }

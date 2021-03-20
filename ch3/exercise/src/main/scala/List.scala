@@ -103,6 +103,10 @@ object List {
     foldLeft(l, 0)((a, _) => a + 1)
   }
 
+  def reverse(l: List[Int]): List[Int] = {
+    foldLeft(l, Nil: List[Int])((b, a) => Cons(a, b))
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
