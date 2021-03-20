@@ -77,4 +77,12 @@ class Test extends AnyFunSuite {
   test("Problem 3.12") {
     assert(reverse(List(1, 2, 3, 4)) == List(4, 3, 2, 1))
   }
+
+  test("Problem 3.13") {
+    assert(
+      foldRightViaFoldLeft(List(1, 2, 3, 4), Nil: List[Int])(
+        Cons(_, _)
+      ) == List(1, 2, 3, 4)
+    )
+  }
 }
