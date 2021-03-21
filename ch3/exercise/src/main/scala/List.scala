@@ -138,6 +138,13 @@ object List {
     })
   }
 
+  def flatMap[A](as: List[A])(f: A => List[A]) = {
+    // List(1, 1, 2, 2, 3, 3)
+    foldRight(as, Nil: List[A])((h, t) => {
+      append(f(h), t)
+    })
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
