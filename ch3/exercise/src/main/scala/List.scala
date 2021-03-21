@@ -130,6 +130,14 @@ object List {
     foldRight(l, Nil: List[B])((h, t) => Cons(f(h), t))
   }
 
+  def filter[A](as: List[A])(f: A => Boolean) = {
+    // List(1, 2, 3, 4, 5)
+    foldRight(as, Nil: List[A])((h, t) => {
+      if (f(h)) Cons(h, t)
+      else t
+    })
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
