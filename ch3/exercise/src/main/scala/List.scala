@@ -145,6 +145,12 @@ object List {
     })
   }
 
+  def sumEach(l1: List[Int], l2: List[Int]): List[Int] = (l1, l2) match {
+    case (Nil, _)                     => Nil
+    case (_, Nil)                     => Nil
+    case (Cons(h1, t1), Cons(h2, t2)) => Cons((h1 + h2), sumEach(t1, t2))
+  }
+
   // 이게 없으면 자료구조를 쓸수가 없다
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
