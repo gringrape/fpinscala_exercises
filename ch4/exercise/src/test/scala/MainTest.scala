@@ -8,6 +8,7 @@ class MainTest extends AnyFunSuite {
     assert(mean(List(3, 4, 5)) == 4)
 
   }
+
   test("mean throws exception when sequence length is equal to zero") {
     var caught = intercept[Exception] {
       mean(List())
