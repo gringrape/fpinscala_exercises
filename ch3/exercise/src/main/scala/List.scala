@@ -7,6 +7,11 @@ case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
 
 object List {
+  def tail(ints: List[Int]) = ints match {
+    // TODO: Nil 인 경우도 고려
+    case Cons(h, t) => t
+  }
+
   // Example
   def sum(ints: List[Int]): Int = ints match {
     case Nil         => 0
@@ -28,16 +33,15 @@ object List {
     case _                                     => 101
   }
 
-  // Promblem 3.2
-  def tail(target: List[Int]): List[Int] = target match {
-    case Nil        => sys.error("No list is given")
-    case Cons(_, x) => x
-  }
+  // // Promblem 3.2
+  // def tail(target: List[Int]): List[Int] = target match {
+  //   case Nil        => sys.error("No list is given")
+  //   case Cons(_, x) => x
+  // }
 
   // Problem 3.3
-  def setHead(list: List[Int], head: Int): List[Int] = list match {
-    case Nil         => sys.error("No list is given")
-    case Cons(_, xs) => Cons(head, xs)
+  def setHead(list: List[Int], n: Int) = list match {
+    case Cons(_, tail) => Cons(n, tail)
   }
 
   // Problem 3.4
@@ -46,15 +50,8 @@ object List {
     if (n <= 0) list
     else
       list match {
-        case Nil        => Nil
-        case Cons(_, t) => drop(t, n - 1)
+        case Cons(_, tail) => drop(tail, n - 1)
       }
-  }
-
-  // Problem 3.5
-  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
-    case Cons(h, t) if (f(h)) => dropWhile(t, f)
-    case _                    => l // 위에서 안걸리는 모든 경우를 다룰때, 이런 표현을 쓴다.
   }
 
   // Problem 3.6 - 절반의 성공
@@ -156,4 +153,6 @@ object List {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
   }
+
+  def take(list: List[Int], n: Int) = Cons(3, Nil)
 }
